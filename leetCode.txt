@@ -15,3 +15,57 @@ class Solution {
         return $arr;
     }
 }
+
+
++804. Unique Morse Code Words:
+class Solution {
+
+    /**
+     * @param String[] $words
+     * @return Integer
+     */
+    function uniqueMorseRepresentations($words) {
+        $arrCodeRs = [];
+        $listCode = array(
+            "a" => ".-",
+            "b" => "-...",
+            "c" => "-.-.",
+            "d" => "-..",
+            "e" => ".",
+            "f" => "..-.",
+            "g" => "--.",
+            "h" => "....",
+            "i" => "..",
+            "j" => ".---",
+            "k" => "-.-",
+            "l" => ".-..",
+            "m" => "--",
+            "n" => "-.",
+            "o" => "---",
+            "p" => ".--.",
+            "q" => "--.-",
+            "r" => ".-.",
+            "s" => "...",
+            "t" => "-",
+            "u" => "..-",
+            "v" => "...-",
+            "w" => ".--",
+            "x" => "-..-",
+            "y" => "-.--",
+            "z" => "--.."
+        );
+
+        for ($i=0; $i < count($words); $i++) {
+            $code = '';
+            for ($j=0; $j < strlen($words[$i]); $j++) {
+                $code .=  (string)$listCode[$words[$i][$j]];
+            }
+
+            if (!in_array($code, $arrCodeRs)) {
+                $arrCodeRs[] = $code;
+            }
+        }
+
+        return count($arrCodeRs);
+    }
+}
